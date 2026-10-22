@@ -1,16 +1,9 @@
-//your code here
 document.addEventListener("DOMContentLoaded", () => {
     const gameContainer = document.getElementById("gameContainer");
     const pointsEarnedSpan = document.getElementById("pointsEarned");
 
     const GRID_SIZE = 40;
     const TOTAL_PIXELS = GRID_SIZE * GRID_SIZE;
-
-    let snake = [];
-    let direction = "RIGHT";
-    let foodIndex = null;
-    let score = 0;
-    let gameInterval = null;
 
     for (let i = 1; i <= TOTAL_PIXELS; i++) {
         const pixel = document.createElement("div");
@@ -19,25 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
         gameContainer.appendChild(pixel);
     }
 
-    function initGame() {
-        score = 0;
-        pointsEarnedSpan.textContent = score;
-        direction = "RIGHT";
-
-        const startPixelIndex = (20 - 1) * GRID_SIZE + 1;
-        snake = [startPixelIndex];
-
-        for (let i = 1; i <= TOTAL_PIXELS; i++) {
-            const px = document.getElementById(`pixel${i}`);
-            px.className = "pixel";
-        }
-
-        renderSnake();
-        generateFood();
-
-        if (gameInterval) clearInterval(gameInterval);
-        gameInterval = setInterval(moveSnake, 100);
-    }
+    let score = 0;
+    let direction = "RIGHT";
+    let snake = [(20 - 1) * GRID_SIZE + 1];
+    let foodIndex = null;
+    let gameInterval = null;
 
     function renderSnake() {
         snake.forEach((index) => {
@@ -64,6 +43,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (foodPixel) {
             foodPixel.classList.add("food");
         }
+    }
+
+    function initGame() {
+        score = 0;
+        pointsEarnedSpan.textContent = score;
+        direction = "RIGHT";
+        snake = [(20 - 1) * GRID_SIZE + 1];
+
+        for (let i = 1; i <= TOTAL_PIXELS; i++) {
+            const px = document.getElementById(`pixel${i}`);
+            px.className = "pixel";
+        }
+
+        renderSnake();
+        generateFood();
+
+        if (gameInterval) clearInterval(gameInterval);
+        gameInterval = setInterval(moveSnake, 100);
     }
 
     function moveSnake() {
