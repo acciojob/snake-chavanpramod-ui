@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let score = 0;
     let direction = "RIGHT";
-    let snake = [(20 - 1) * GRID_SIZE + 1];
+    let snake = [1];
     let foodIndex = null;
     let gameInterval = null;
 
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         score = 0;
         pointsEarnedSpan.textContent = score;
         direction = "RIGHT";
-        snake = [(20 - 1) * GRID_SIZE + 1];
+        snake = [1];
 
         for (let i = 1; i <= TOTAL_PIXELS; i++) {
             const px = document.getElementById(`pixel${i}`);
