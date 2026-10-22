@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameContainer = document.getElementById("gameContainer");
     const pointsEarnedSpan = document.getElementById("pointsEarned");
 
-    const GRID_SIZE = 40;
+    const GRID_SIZE = 20;
     const TOTAL_PIXELS = GRID_SIZE * GRID_SIZE;
 
     for (let i = 1; i <= TOTAL_PIXELS; i++) {
